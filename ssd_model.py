@@ -89,6 +89,10 @@ def show_inference(model, image_path):
     output_dict = run_inference_for_single_image(model, image_np)
     # Visualization of the results of a detection.
 
+    PATH_TO_LABELS = 'C:\\Users\\5-8\\Documents\\cho\\Tensorflow\\models\\research\\object_detection\\data\\mscoco_label_map.pbtxt'
+    category_index = label_map_util.create_category_index_from_labelmap(PATH_TO_LABELS, use_display_name=True)
+    print(category_index)  
+    
     vis_util.visualize_boxes_and_labels_on_image_array(
         image_np,
         np.array(output_dict['detection_boxes']),
@@ -99,11 +103,13 @@ def show_inference(model, image_path):
         use_normalized_coordinates=True,
         line_thickness=8)
 
+    image_np = cv2.cvtColor(image_np, cv2.COLOR_BGR2RGB)
+    image_np = cv2.resize( image_np, (800,600), interpolation=cv2.INTER_AREA)
     st.image(image_np)
 
 
 
-def ssd_img():
+def ssd_img(image_path):
     # patch tf1 into `utils.ops`
     utils_ops.tf = tf.compat.v1
 
@@ -112,9 +118,12 @@ def ssd_img():
 
     # Loading label map  내 로컬에 설치된 TFOD 경로
     # List of the strings that is used to add correct label for each box.
-    PATH_TO_LABELS = 'C:\\Users\\na880\\Documents\\cho\\Tensorflow\models\\research\\object_detection\\data\\mscoco_label_map.pbtxt'
-    category_index = label_map_util.create_category_index_from_labelmap(PATH_TO_LABELS, use_display_name=True)
-    print(category_index)  
+    
+    
+    ##  show_inference 함수로 이동함.
+    # PATH_TO_LABELS = 'C:\\Users\\5-8\\Documents\\cho\\Tensorflow\\models\\research\\object_detection\\data\\mscoco_label_map.pbtxt'
+    # category_index = label_map_util.create_category_index_from_labelmap(PATH_TO_LABELS, use_display_name=True)
+    # print(category_index)  
     
     model_name = 'ssd_mobilenet_v1_coco_2017_11_17'
     detection_model = load_model(model_name)
@@ -122,8 +131,10 @@ def ssd_img():
     print( detection_model.signatures['serving_default'].output_dtypes )
     print( detection_model.signatures['serving_default'].output_shapes )
 
-    image_path = pathlib.Path('data\\images\\image2.jpg')
+    ## ssd.py로 다 이동
+    # image_path = pathlib.Path('data\\images\\image1.jpg')
     show_inference(detection_model, image_path)
 
-
+    
+    
 

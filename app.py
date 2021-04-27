@@ -3,6 +3,7 @@ import cv2
 from ssd import run_ssd
 
 
+
 def main():
     
     st.set_page_config(layout='wide', initial_sidebar_state='auto')
