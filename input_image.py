@@ -17,34 +17,33 @@ def save_uploaded_file(directory, file) :
 
 def input_image() :
     
-    image_file = st.file_uploader('Upload Image', type=['png', 'jpg', 'jpeg'], accept_multiple_files=True)
+    image_file = st.file_uploader('Upload Image', type=['png', 'jpg', 'jpeg'],accept_multiple_files=True)
 
     if image_file is not None :
         
         # st.write( image_file.name )
                 
-        st.subheader('Image resized 800 X 600 (Original) ')
-
-        image = Image.open(image_file)
-
-        image = image.resize((800, 600) )
-
-        st.image(image)
-
-        save_file = save_uploaded_file('temp_files', image_file)
-
-        print(save_file.name)
-
-
-        # btn = st.button('Object Detection')
-
-        # if btn :
+        # st.subheader('Image resized 800 X 600 (Original) ')
+        file_path= []
+        for img_file in image_file :
             
-        #     image_path = pathlib.Path('temp_file\\image3.jpeg')
-        #     st.subheader('Objecct Detection Image result')
-        #     ssd_img(image_path)         
+            save_uploaded_file('temp_files', img_file)
+            file_path.append(img_file)
+            img = Image.open(img_file)
+            img = img.resize((800,600))
+            st.image(img)
+        # print(file_path)
+        btn = st.button('Object Detection')
+        
 
+        if btn :
+            st.subheader('Objecct Detection Image result')
+            for file in file_path :    
+                image_path = pathlib.Path('temp_files\\' + str(file.name))
+                print(image_path)
+                ssd_img(image_path)         
 
+  
 
 
 

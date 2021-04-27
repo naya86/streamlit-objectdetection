@@ -18,8 +18,6 @@ from object_detection.utils import visualization_utils as vis_util
 
 
 
-
-
 # Loader
 def load_model(model_name):
     base_url = 'http://download.tensorflow.org/models/object_detection/'
@@ -34,7 +32,6 @@ def load_model(model_name):
     model = tf.saved_model.load(str(model_dir))
 
     return model
-
 
 
 # 디텍션
@@ -108,33 +105,38 @@ def show_inference(model, image_path):
     st.image(image_np)
 
 
+def ssd_video() :
+    cap = cv2.VideoCapture('data/videos/video.mp4')
+    # st.video(cap)
+    # if cap.isOpened() == False :    # True False로 값이 나옴 isOpened
+    # print('Error opening video stream of file')
+    image_placeholder= st.empty()
+    print(image_placeholder)
+    # else :
+    # # 반복문 필요이유 : 비디오는 여러 사진으로 구성되어 있으니까.! 여러개니까
+    while cap.isOpened() :
+            
+    #         # 사진을 한장씩 가져와서 
 
-def ssd_img(image_path):
-    # patch tf1 into `utils.ops`
-    utils_ops.tf = tf.compat.v1
+            ret, frame = cap.read()       # ret 에는 True , False 로 가져오고 , frame 에는 numpy 로 가져옴(이미지). 비디오에 관한 프레임이 있으면 ret은 True
 
-    # Patch the location of gfile
-    tf.gfile = tf.io.gfile
+    #         # 제대로 사진 가져왔으면, 화면에 표시
+            if ret == True :
+    #             # 이 부분을 모델 추론, 화면에 보여주는 코드로 변경
+                image_placeholder.image(frame, channels="BRG")      
+    #             # cv2.imshow('frame', frame)
+    #             start_time = time.time() # 추론시간 계산.
+    #             show_inference(detection_model, frame)     #  가공이 필요할때는 이 부분에 가공을 해주면 된다.
+    #             end_time = time.time()
+    #             #print(end_time - start_time)
 
-    # Loading label map  내 로컬에 설치된 TFOD 경로
-    # List of the strings that is used to add correct label for each box.
-    
-    
-    ##  show_inference 함수로 이동함.
-    # PATH_TO_LABELS = 'C:\\Users\\5-8\\Documents\\cho\\Tensorflow\\models\\research\\object_detection\\data\\mscoco_label_map.pbtxt'
-    # category_index = label_map_util.create_category_index_from_labelmap(PATH_TO_LABELS, use_display_name=True)
-    # print(category_index)  
-    
-    model_name = 'ssd_mobilenet_v1_coco_2017_11_17'
-    detection_model = load_model(model_name)
-    print( detection_model.signatures['serving_default'].inputs )
-    print( detection_model.signatures['serving_default'].output_dtypes )
-    print( detection_model.signatures['serving_default'].output_shapes )
+    #             #키보드에서 esc키를 누르면 exit 하라
+    #             if cv2.waitKey(25) & 0xFF == 27 :
+    #                 break
 
-    ## ssd.py로 다 이동
-    # image_path = pathlib.Path('data\\images\\image1.jpg')
-    show_inference(detection_model, image_path)
+    #         else : 
+    #             break
 
-    
-    
+    #     cap.release()  # 비디오파일 닫는 느낌
 
+    #     cv2.destroyAllWindows()
