@@ -2,7 +2,7 @@ import streamlit as st
 import cv2
 from PIL import Image
 from ssd_model import ssd_img
-from ssd_model_video import ssd_video
+
 import pathlib
 from input_image import input_image
 
@@ -63,14 +63,14 @@ def run_ssd() :
     
     
     
-    if sel_ssd == 'Video' :
+    # if sel_ssd == 'Video' :
 
-        video_btn = st.selectbox('select video', ['video_1', 'video_2', 'video_3' ] )
+    #     video_btn = st.selectbox('select video', ['video_1', 'video_2', 'video_3' ] )
 
-        if video_btn == 'video_1' : 
-            ssd_video()
-    #         video_file = open('data/videos/video.mp4', 'rb').read()
-    #         video_file = video.resize( ( 800,600 ) )
-    #         st.video(video_file)
+    #     if video_btn == 'video_1' : 
+    #         ssd_video()
+    # #         video_file = open('data/videos/video.mp4', 'rb').read()
+    # #         video_file = video.resize( ( 800,600 ) )
+    # #         st.video(video_file)
 
 
