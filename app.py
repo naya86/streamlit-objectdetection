@@ -1,6 +1,7 @@
 import streamlit as st
 import cv2
 from ssd import run_ssd
+from yolop import run_yolo
 
 
 
@@ -22,6 +23,10 @@ def main():
     if choice == 'SSD' :
         
         run_ssd()
+
+    if choice == 'YOLO' :
+
+        run_yolo()
 
             
 

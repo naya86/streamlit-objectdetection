@@ -9,7 +9,7 @@ from input_image import input_image
 
 def run_ssd() : 
 
-    st.info('Image Object Detection 활용')
+    st.info('SSD Image Object Detection 활용')
     
     sel_ssd = st.radio('Select', ['Image', 'Input Image','Video'] )
 
@@ -63,14 +63,17 @@ def run_ssd() :
     
     
     
-    # if sel_ssd == 'Video' :
+    if sel_ssd == 'Video' :
 
-    #     video_btn = st.selectbox('select video', ['video_1', 'video_2', 'video_3' ] )
+        st.subheader('출력되는 영상 실시간 Object Dection')
 
-    #     if video_btn == 'video_1' : 
-    #         ssd_video()
-    # #         video_file = open('data/videos/video.mp4', 'rb').read()
-    # #         video_file = video.resize( ( 800,600 ) )
-    # #         st.video(video_file)
+        video_btn = st.button('Play')
+        
+        if video_btn : 
+           
+            video_file = open('data/videos/output.mp4', 'rb').read()
+            # video_file = cv2.cvtColor(video_file, cv2.COLOR_BGR2RGB)
+            st.video(video_file)
+    
 
 
