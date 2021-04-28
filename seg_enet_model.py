@@ -87,7 +87,7 @@ def seg_img(image_path):
                     cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0) , 2 )
         cv2.rectangle(my_legend, (100, (i*25)), (300, (i*25) + 25) , tuple(color_info), -1)
 
-    st.image(cv_enet_model_output, width=600) 
+    st.image(cv_enet_model_output, width=800) 
     # cv2.imshow('ori', sample_img)
     # st.image(mask_class_map)
     st.image(my_legend)

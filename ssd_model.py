@@ -89,7 +89,7 @@ def show_inference(model, image_path):
     output_dict = run_inference_for_single_image(model, image_np)
     # Visualization of the results of a detection.
 
-    PATH_TO_LABELS = 'C:\\Users\\5-8\\Documents\\cho\\Tensorflow\\models\\research\\object_detection\\data\\mscoco_label_map.pbtxt'
+    PATH_TO_LABELS = 'C:\\Users\\na880\\Documents\\cho\\Tensorflow\\models\\research\\object_detection\\data\\mscoco_label_map.pbtxt'
     
     category_index = label_map_util.create_category_index_from_labelmap(PATH_TO_LABELS, use_display_name=True)
     print(category_index)  

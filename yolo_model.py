@@ -48,11 +48,11 @@ def box_draw( image, boxes, scores, classes, all_classes):
         right = min(image.shape[1], np.floor(x + w + 0.5).astype(int))
         bottom = min(image.shape[0], np.floor(y + h + 0.5).astype(int))
 
-        cv2.rectangle(image, (top, left), (right, bottom), (255, 0, 0), 2)
+        cv2.rectangle(image, (top, left), (right, bottom), (255, 0, 0), 3)
         cv2.putText(image, '{0} {1:.2f}'.format(all_classes[cl], score),
                     (top, left - 6),
                     cv2.FONT_HERSHEY_SIMPLEX,
-                    0.6, (0, 0, 255), 1,
+                    0.6, (0, 0, 255), 3,
                     cv2.LINE_AA)
 
         print('class: {0}, score: {1:.2f}'.format(all_classes[cl], score))

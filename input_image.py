@@ -91,7 +91,7 @@ def input_image_seg() :
             file_path.append(img_file)
             img = Image.open(img_file)
             
-            st.image(img,width=600)
+            st.image(img,width=800)
         # print(file_path)
         btn = st.button('Object Detection')
         
