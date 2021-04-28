@@ -71,7 +71,7 @@ def run_ssd() :
         
         if video_btn : 
            
-            video_file = open('data/videos/output.mp4', 'rb').read()
+            video_file = open('data/videos/output_ssd.mp4', 'rb').read()
             # video_file = cv2.cvtColor(video_file, cv2.COLOR_BGR2RGB)
             st.video(video_file)
     

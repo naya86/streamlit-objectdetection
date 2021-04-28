@@ -104,9 +104,9 @@ def show_inference(model, image_path):
         use_normalized_coordinates=True,
         line_thickness=8)
 
-    image_np = cv2.cvtColor(image_np, cv2.COLOR_BGR2RGB)
-    image_np = cv2.resize( image_np, (800,600), interpolation=cv2.INTER_AREA)
-    st.image(image_np)
+    
+    return image_np
+    
 
 
 
@@ -134,7 +134,11 @@ def ssd_img(image_path):
 
     ## ssd.py로 다 이동
     # image_path = pathlib.Path('data\\images\\image1.jpg')
-    show_inference(detection_model, image_path)
+    image = show_inference(detection_model, image_path)
+
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+    image = cv2.resize( image, (800,600), interpolation=cv2.INTER_AREA)
+    st.image(image)
 
     
     

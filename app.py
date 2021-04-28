@@ -2,6 +2,7 @@ import streamlit as st
 import cv2
 from ssd import run_ssd
 from yolop import run_yolo
+from semantic_segmentation import run_seg
 
 
 
@@ -9,11 +10,11 @@ def main():
     
     st.set_page_config(layout='wide', initial_sidebar_state='auto')
 
-    st.title('Streamlit Object Detection')
+    st.title('Streamlit Object Detection & Semantic Segmentation')
 
     st.subheader('SSD , YOLO 를 활용한 Object Detection')
 
-    menu = ['Home', 'SSD', 'YOLO']
+    menu = ['Home', 'SSD', 'YOLO','Semantic_Segmentation']
 
     choice = st.sidebar.selectbox('MENU', menu)
 
@@ -27,6 +28,9 @@ def main():
     if choice == 'YOLO' :
 
         run_yolo()
+
+    if choice == 'Semantic_Segmentation' :
+        run_seg()
 
             
 
