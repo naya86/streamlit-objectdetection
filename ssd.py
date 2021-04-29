@@ -20,7 +20,7 @@ def run_ssd() :
         st.subheader('Object Detection이란')
         st.write('Object Detection은 Classification의 확장된 개념으로 볼 수 있다.')
         st.write('Classifictation는 사전에 학습된 데이터를 기반으로 어떤 이미지가 데이터로 들어오면 그 이미지가 무엇을 나타내는지 확률적 분석을 통해서 이미지 분류를 해준다.')
-        img = Image.open('data/images/cat1.png')
+        img = Image.open('data/images/cat1.PNG')
         st.image(img)
         st.write('위와 같이 Classification은 하나의 이미지를 하나의 객체로 분류해주는 반면, Object Detection은 Localization이라는 개념을 포함하여')
         st.write('다중 객체 분류를 가능하게 해준다. 이러한 기능을 하게 하는 모델 중 하나가 SSD이다.')
