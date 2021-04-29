@@ -9,7 +9,7 @@ from home import run_home
 
 def main():
     
-    st.set_page_config(layout='wide', initial_sidebar_state='auto')
+    st.set_page_config(layout='wide')
 
     st.title('Streamlit Object Detection & Semantic Segmentation')
 

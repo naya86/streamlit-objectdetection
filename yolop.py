@@ -17,27 +17,40 @@ def run_yolo():
 
     if select == 'About YOLO' :
         st.subheader('YOLO 란')
-        st.write('''YOLO는 You Only Look Once의 약자로 Object detection 분야에서 많이 알려진 모델이다. 
+        st.write('''YOLO는 You Only Look Once의 약자로 Object detection 분야에서 많이 알려진 모델이다.
                     처음으로 one-stage-detection방법을 고안해 실시간으로 Object Detection이 가능하게 만들었다.''')
         ssd_cap_img1 = Image.open('data/images/ssd_capture1.PNG')
+        ssd_cap_img1 = ssd_cap_img1.resize((600,400))
         st.image(ssd_cap_img1)
-        st.write('''YOLO는 기존의 Object Detection 모델과 비교 했을 때  
-                    첫 번째로 간단한 처리 과정으로 속도가 매우 빠르며 기존의 실시간 Object Detection 모델들과 비교하면 2배 정도 높은 mAP를 보인다. 
-                    두 번째는 이미지 전체를 한 번에 바라보는 방식을 이용하므로 class에 대한 맥락적 이해도가 다른 모델에 비해 높아 낮은 False-Positive를 보인다. 
-                    세 번째로 일반화된 Object 학습이 가능하여 자연 이미지로 학습하고 이를 그림과 같은 곳에 테스트 해도 다른 모델에 비해 훨씬 높은 성능을 보여준다. 
-                    하지만 다른 모델에 비해 낮은 정확도를 가지고 있다. 특히 작은 객체에 대해 정확도가 낮다.''')
+
+        st.write('YOLO는 기존의 Object Detection 모델과 비교 했을 때')  
+        st.write('첫 번째로 간단한 처리 과정으로 속도가 매우 빠르며 기존의 실시간 Object Detection 모델들과 비교하면 2배 정도 높은 mAP를 보인다.') 
+        st.write('두 번째는 이미지 전체를 한 번에 바라보는 방식을 이용하므로 class에 대한 맥락적 이해도가 다른 모델에 비해 높아 낮은 False-Positive를 보인다.') 
+        st.write('세 번째로 일반화된 Object 학습이 가능하여 자연 이미지로 학습하고 이를 그림과 같은 곳에 테스트 해도 다른 모델에 비해 훨씬 높은 성능을 보여준다.') 
+        st.write('하지만 다른 모델에 비해 낮은 정확도를 가지고 있다. 특히 작은 객체에 대해 정확도가 낮다.')
         
         yolo_cap_img1 = Image.open('data/images/yolo_capture1.PNG')
-        st.image(yolo_cap_img1, width=500)
+        yolo_cap_img1 = yolo_cap_img1.resize((600,400))
+        st.image(yolo_cap_img1)
         st.write('(YOLO Structure)')
 
         yolo_cap_img2 = Image.open('data/images/yolo_capture2.PNG')
+        yolo_cap_img2 = yolo_cap_img2.resize((600,400))
         st.image(yolo_cap_img2)
-        st.write('''YOLO 는 이미지를 S X S 의 그리드로 나눠 각각의 그리드에서 트레이닝 되어 있는 데이터를 기반으로, 확률로 객체를 인식하고 , IOU를 이용하여 같은 객체임을 판단한다.
-                    이때 여러개의 바운딩 박스가 생성되는데 , NMS 를 이용하여 하나만 남겨준다.
-                    두개 이상의 객체가 겹쳐 있을때는 결과값의 벡터를 하나의 벡터로 처리(Anchor Boxes)하여 , 객체를 분류한다.''')
+
+        st.write('YOLO 는 이미지를 S X S 의 그리드로 나눠 각각의 그리드에서 트레이닝 되어 있는 데이터를 기반으로 확률로 객체를 인식하고 , IOU를 이용하여 같은 객체임을 판단한다.')
+        st.write('이때 여러개의 바운딩 박스가 생성되는데 , NMS 를 이용하여 하나만 남겨준다.')
+
+        yolo_cap_img4 = Image.open('data/images/yolo_capture4.PNG')
+        yolo_cap_img4 = yolo_cap_img4.resize((600,400))
+        st.image(yolo_cap_img4)
+        
+
+        st.write('두개 이상의 객체가 겹쳐 있을때는 결과값의 벡터를 하나의 벡터로 처리(Anchor Boxes)하여 , 객체를 분류한다.')
+
         yolo_cap_img3 = Image.open('data/images/yolo_capture3.PNG')
-        st.image(yolo_cap_img3,width=1044)
+        yolo_cap_img3 = yolo_cap_img3.resize((600,400))
+        st.image(yolo_cap_img3)
 
 
         

@@ -22,20 +22,28 @@ def run_ssd() :
         st.write('Classifictation는 사전에 학습된 데이터를 기반으로 어떤 이미지가 데이터로 들어오면 그 이미지가 무엇을 나타내는지 확률적 분석을 통해서 이미지 분류를 해준다.')
         img = Image.open('data/images/cat1.PNG')
         st.image(img)
+
         st.write('위와 같이 Classification은 하나의 이미지를 하나의 객체로 분류해주는 반면, Object Detection은 Localization이라는 개념을 포함하여')
         st.write('다중 객체 분류를 가능하게 해준다. 이러한 기능을 하게 하는 모델 중 하나가 SSD이다.')
+
         od_img = Image.open('data/images/object_detection1.PNG')
         st.image(od_img)
+
         st.write('기존에는 물체를 감지하는 커널을 가지고 , Sliding window방식으로 Convolution하며 , 나온 결과를 히스토그램으로 그려가며 물체를 인식한다.')
         st.write('이때 원본스케일과 다른 여러개의 다른 스케일을 가진 이미지로 반복하며, 크고 작은 물체들을 인식하게 되는것이다.')
         st.write('처리속도가 느리고, 복잡하여 개발된것이 SSD이다.')
+
         st.subheader('SSD란 Single Shot Detector 의 약자로 , ')
         st.write('말 그대로 사진의 변형 없이 그 한 장으로 훈련, 검출을 하는 Detector를 의미한다. ')
         st.write('기존의 처리속도 및 정확도를 개선하여, 효율적으로 기능하게끔 한다.')
+        
         ssd_cap_img1 = Image.open('data/images/ssd_capture1.PNG')
+        ssd_cap_img1 = ssd_cap_img1.resize((600,400))
         st.image(ssd_cap_img1)
         st.write('(SSD의 정확도 및 처리속도)')
+
         ssd_cap_img2 = Image.open('data/images/ssd_capture2.PNG')
+        ssd_cap_img2 = ssd_cap_img2.resize((600,400))
         st.image(ssd_cap_img2)
         st.write('(SSD Structure)')
         st.write('SSD는 YOLO와 다르게, 중간계층의 다양한 피쳐맵(Feature Map)들을 활용할 뿐만아니라 FC Layer계층을 컨볼루션 연산으로 대체함으로써, 성능과 속도를 향상시켰다.') 
