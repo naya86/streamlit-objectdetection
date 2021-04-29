@@ -11,7 +11,7 @@ from input_image import input_image_seg
 
 def run_seg() : 
    
-   menu = ['About Semantic Segmentation', 'E-NET project']
+   menu = ['About Semantic Segmentation', 'Play E-NET']
 
    select = st.sidebar.selectbox('SELECT', menu)
    # input_image_seg()

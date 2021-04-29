@@ -10,7 +10,7 @@ from yolo_model import yolo_img
 
 
 def run_yolo():
-    menu = ['About YOLO', 'YOLO project']
+    menu = ['About YOLO', 'Play YOLO']
     select = st.sidebar.selectbox('SELECT', menu)
     
     # st.info('SSD Image Object Detection 활용')

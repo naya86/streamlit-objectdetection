@@ -10,7 +10,7 @@ from home import run_home
 
 def run_ssd() : 
 
-    menu = ['About SSD', 'SSD project']
+    menu = ['About SSD', 'Play SSD']
 
     select = st.sidebar.selectbox('SELECT', menu)
     
