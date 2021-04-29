@@ -53,7 +53,7 @@ def run_ssd() :
 
 
 
-    elif select == 'SSD project' :
+    elif select == 'Play SSD' :
     
         sel_ssd = st.radio('Select', ['Image', 'Video'] )  #Input_Image 뺌
 

@@ -42,7 +42,7 @@ def run_seg() :
 
       st.write('(E-NET Architecture)')
       st.write('E-NET의 아웃풋은 512 X 512를 가진다.')
-   elif select == 'E-NET project' :
+   elif select == 'Play E-NET' :
     
       # EC2 문제로 없애기
       # sel_seg = st.radio('Select', ['Input Image','Video'] )
@@ -62,7 +62,7 @@ def run_seg() :
       st.video(video_file)
 
       st.write('(실시간 영상을 출력하려 했으나 , EC2 프리티어 문제로, LOCAL작업 후 올린 영상)')
-      st.write('(LOCAL에서의 DETECTION 처리 영상)')
+      st.write('(LOCAL에서의  SEGMENTATION 처리 영상)')
       
       re_video_file = open('data/videos/record_seg.mp4','rb').read()
       st.video(re_video_file)

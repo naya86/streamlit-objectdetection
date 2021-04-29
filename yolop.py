@@ -55,7 +55,7 @@ def run_yolo():
 
         
 
-    if select == 'YOLO project' :
+    if select == 'Play YOLO' :
     
         sel_yolo = st.radio('Select', ['Image', 'Video'] )#'Input Image'뺌
 
