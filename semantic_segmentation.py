@@ -21,26 +21,28 @@ def run_seg() :
 
    elif select == 'E-NET project' :
     
-      sel_seg = st.radio('Select', ['Input Image','Video'] )
+      # EC2 문제로 없애기
+      # sel_seg = st.radio('Select', ['Input Image','Video'] )
 
       
-      if sel_seg == 'Input Image' : 
-         input_image_seg()
-            
-        
-        
-        
-        
-      if sel_seg == 'Video' :
+      # if sel_seg == 'Input Image' : 
+      #    input_image_seg()
+         
+         
+      # if sel_seg == 'Video' :
 
-         st.subheader('출력되는 영상 실시간 Object Dection')
-                    
-           
-         video_file = open('data/videos/output_seg.mp4', 'rb').read()
-         # video_file = cv2.cvtColor(video_file, cv2.COLOR_BGR2RGB)
-         st.video(video_file)
+      st.subheader('출력되는 영상 실시간 Object Dection')
+                  
+         
+      video_file = open('data/videos/output_seg.mp4', 'rb').read()
+      # video_file = cv2.cvtColor(video_file, cv2.COLOR_BGR2RGB)
+      st.video(video_file)
 
-         st.write('위의 화면은 프리티어 EC2 특성상, 로컬에서 작업하여 나온 결과물을 올린 영상이다.')
+      st.write('(실시간 영상을 출력하려 했으나 , EC2 프리티어 문제로, LOCAL작업 후 올린 영상)')
+      st.write('(LOCAL에서의 DETECTION 처리 영상)')
+      
+      re_video_file = open('data/videos/record_seg.mp4','rb').read()
+      st.video(re_video_file)
 
 
 

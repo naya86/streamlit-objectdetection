@@ -16,15 +16,39 @@ def run_yolo():
     # st.info('SSD Image Object Detection 활용')
 
     if select == 'About YOLO' :
-        st.subheader('언제하냐')
+        st.subheader('YOLO 란')
+        st.write('''YOLO는 You Only Look Once의 약자로 Object detection 분야에서 많이 알려진 모델이다. 
+                    처음으로 one-stage-detection방법을 고안해 실시간으로 Object Detection이 가능하게 만들었다.''')
+        ssd_cap_img1 = Image.open('data/images/ssd_capture1.PNG')
+        st.image(ssd_cap_img1)
+        st.write('''YOLO는 기존의 Object Detection 모델과 비교 했을 때  
+                    첫 번째로 간단한 처리 과정으로 속도가 매우 빠르며 기존의 실시간 Object Detection 모델들과 비교하면 2배 정도 높은 mAP를 보인다. 
+                    두 번째는 이미지 전체를 한 번에 바라보는 방식을 이용하므로 class에 대한 맥락적 이해도가 다른 모델에 비해 높아 낮은 False-Positive를 보인다. 
+                    세 번째로 일반화된 Object 학습이 가능하여 자연 이미지로 학습하고 이를 그림과 같은 곳에 테스트 해도 다른 모델에 비해 훨씬 높은 성능을 보여준다. 
+                    하지만 다른 모델에 비해 낮은 정확도를 가지고 있다. 특히 작은 객체에 대해 정확도가 낮다.''')
+        
+        yolo_cap_img1 = Image.open('data/images/yolo_capture1.PNG')
+        st.image(yolo_cap_img1, width=500)
+        st.write('(YOLO Structure)')
+
+        yolo_cap_img2 = Image.open('data/images/yolo_capture2.PNG')
+        st.image(yolo_cap_img2)
+        st.write('''YOLO 는 이미지를 S X S 의 그리드로 나눠 각각의 그리드에서 트레이닝 되어 있는 데이터를 기반으로, 확률로 객체를 인식하고 , IOU를 이용하여 같은 객체임을 판단한다.
+                    이때 여러개의 바운딩 박스가 생성되는데 , NMS 를 이용하여 하나만 남겨준다.
+                    두개 이상의 객체가 겹쳐 있을때는 결과값의 벡터를 하나의 벡터로 처리(Anchor Boxes)하여 , 객체를 분류한다.''')
+        yolo_cap_img3 = Image.open('data/images/yolo_capture3.PNG')
+        st.image(yolo_cap_img3,width=1044)
+
+
+        
 
     if select == 'YOLO project' :
     
-        sel_yolo = st.radio('Select', ['Image', 'Input Image','Video'] )
+        sel_yolo = st.radio('Select', ['Image', 'Video'] )#'Input Image'뺌
 
         if sel_yolo == 'Image' :
             
-            image_btn = st.selectbox('select image', ['image_1', 'image_2', 'image_3' ] )
+            image_btn = st.selectbox('select image', ['image_1', 'image_2'] )
             
             if image_btn == 'image_1' : 
                 
@@ -35,9 +59,13 @@ def run_yolo():
                 btn = st.button('Object Detection')
 
                 if btn :
-                    image_path = pathlib.Path('data\\images\\image1.jpg')
-                    st.subheader('Objecct Detection Image result')
-                    yolo_img(image_path)
+                    # EC2 문제로 결과 이미지만 가져오기로 함
+                    # image_path = pathlib.Path('data\\images\\image1.jpg')
+                    # st.subheader('Objecct Detection Image result')
+                    # yolo_img(image_path)
+                    img = Image.open('data/images/ch_yolo_image1.jpg')
+                    img = img.resize( (800,600))
+                    st.image(img)
 
             elif image_btn == 'image_2' :
                 img = Image.open('data/images/image2.jpg')
@@ -47,38 +75,33 @@ def run_yolo():
                 btn = st.button('Object Detection')
 
                 if btn :
-                    image_path = pathlib.Path('data\\images\\image2.jpg')
-                    st.subheader('Objecct Detection Image result')
-                    yolo_img(image_path)
+                     # EC2 문제로 결과 이미지만 가져오기로 함
+                    # image_path = pathlib.Path('data\\images\\image1.jpg')
+                    # st.subheader('Objecct Detection Image result')
+                    # yolo_img(image_path)
+                    img = Image.open('data/images/ch_yolo_image2.jpg')
+                    img = img.resize( (800,600))
+                    st.image(img)
+                    st.subheader('작은 물체는 인식이 잘 안되는 것을 볼 수 있다.')
 
-            elif image_btn == 'image_3' :
-                img = Image.open('data/images/image3.jpeg')
-                img = img.resize( ( 800,600 ) )
-                st.image(img)
-
-                btn = st.button('Object Detection')
-
-                if btn :
-                    image_path = pathlib.Path('data\\images\\image3.jpeg')
-                    st.subheader('Objecct Detection Image result')
-                    print(image_path)
-                    yolo_img(image_path)    
-
-        if sel_yolo == 'Input Image' : 
-            input_image_yolo()   
+            
+        # EC2 문제로 없애기
+        # if sel_yolo == 'Input Image' : 
+        #     input_image_yolo()   
 
         
         if sel_yolo == 'Video' :
 
             st.subheader('출력되는 영상 실시간 Object Dection')
 
-            video_btn = st.button('Play')
+            video_file = open('data/videos/output_yolo.mp4', 'rb').read()
+            # video_file = cv2.cvtColor(video_file, cv2.COLOR_BGR2RGB)
             
-            if video_btn : 
-            
-                video_file = open('data/videos/output_yolo.mp4', 'rb').read()
-                # video_file = cv2.cvtColor(video_file, cv2.COLOR_BGR2RGB)
-                
-                # video_file = imutils.resize(video_file, width=800, height=600  )
-                st.video(video_file)
+            # video_file = imutils.resize(video_file, width=800, height=600  )
+            st.video(video_file)
 
+            st.write('(실시간 영상을 출력하려 했으나 , EC2 프리티어 문제로, LOCAL작업 후 올린 영상)')
+            st.write('(LOCAL에서의 DETECTION 처리 영상)')
+            
+            re_video_file = open('data/videos/record_yolo.mp4','rb').read()
+            st.video(re_video_file)

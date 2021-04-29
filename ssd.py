@@ -31,15 +31,27 @@ def run_ssd() :
         st.write('처리속도가 느리고, 복잡하여 개발된것이 SSD이다.')
         st.subheader('SSD란 Single Shot Detector 의 약자로 , ')
         st.write('말 그대로 사진의 변형 없이 그 한 장으로 훈련, 검출을 하는 Detector를 의미한다. ')
+        st.write('기존의 처리속도 및 정확도를 개선하여, 효율적으로 기능하게끔 한다.')
+        ssd_cap_img1 = Image.open('data/images/ssd_capture1.PNG')
+        st.image(ssd_cap_img1)
+        st.write('(SSD의 정확도 및 처리속도)')
+        ssd_cap_img2 = Image.open('data/images/ssd_capture2.PNG')
+        st.image(ssd_cap_img2)
+        st.write('(SSD Structure)')
+        st.write('SSD는 YOLO와 다르게, 중간계층의 다양한 피쳐맵(Feature Map)들을 활용할 뿐만아니라 FC Layer계층을 컨볼루션 연산으로 대체함으로써, 성능과 속도를 향상시켰다.') 
+
+        st.write('Base Network로는 VGG-16을 사용하였다.')
+
+
 
 
     elif select == 'SSD project' :
     
-        sel_ssd = st.radio('Select', ['Image', 'Input Image','Video'] )
+        sel_ssd = st.radio('Select', ['Image', 'Video'] )  #Input_Image 뺌
 
         if sel_ssd == 'Image' :
             
-            image_btn = st.selectbox('select image', ['image_1', 'image_2', 'image_3' ] )
+            image_btn = st.selectbox('select image', ['image_1', 'image_2'] )
             
             if image_btn == 'image_1' : 
                 
@@ -50,9 +62,14 @@ def run_ssd() :
                 btn = st.button('Object Detection')
 
                 if btn :
-                    image_path = pathlib.Path('data\\images\\image1.jpg')
-                    st.subheader('Objecct Detection Image result')
-                    ssd_img(image_path)
+                    # EC2 문제로 결과 이미지만 가져오기로 함
+                    # image_path = pathlib.Path('data\\images\\image1.jpg')
+                    # st.subheader('Objecct Detection Image result')
+                    # ssd_img(image_path)
+
+                    img = Image.open('data/images/ch_image1.jpg')
+                    img = img.resize( (800,600))
+                    st.image(img)
 
             elif image_btn == 'image_2' :
                 img = Image.open('data/images/image2.jpg')
@@ -62,26 +79,18 @@ def run_ssd() :
                 btn = st.button('Object Detection')
 
                 if btn :
-                    image_path = pathlib.Path('data\\images\\image2.jpg')
-                    st.subheader('Objecct Detection Image result')
-                    ssd_img(image_path)
+                    # EC2 문제로 결과 이미지만 가져오기로 함
+                    # image_path = pathlib.Path('data\\images\\image2.jpg')
+                    # st.subheader('Objecct Detection Image result')
+                    # ssd_img(image_path)
 
-            elif image_btn == 'image_3' :
-                img = Image.open('data/images/image3.jpeg')
-                img = img.resize( ( 800,600 ) )
-                st.image(img)
+                    img = Image.open('data/images/ch_image2.jpg')
+                    img = img.resize( (800,600))
+                    st.image(img)
 
-                btn = st.button('Object Detection')
-
-                if btn :
-                    image_path = pathlib.Path('data\\images\\image3.jpeg')
-                    st.subheader('Objecct Detection Image result')
-                    print(image_path)
-                    ssd_img(image_path)        
-
-
-        if sel_ssd == 'Input Image' : 
-            input_image()
+        # EC2 문제로 없애기    
+        # if sel_ssd == 'Input Image' : 
+        #     input_image()
             
         
         
@@ -90,14 +99,15 @@ def run_ssd() :
         if sel_ssd == 'Video' :
 
             st.subheader('출력되는 영상 실시간 Object Dection')
-
-            video_btn = st.button('Play')
+     
+            video_file = open('data/videos/output_ssd.mp4', 'rb').read()
+            # video_file = cv2.cvtColor(video_file, cv2.COLOR_BGR2RGB)
+            st.video(video_file)
+            st.write('(실시간 영상을 출력하려 했으나 , EC2 프리티어 문제로, LOCAL작업 후 올린 영상)')
+            st.write('(LOCAL에서의 DETECTION 처리 영상)')
             
-            if video_btn : 
-            
-                video_file = open('data/videos/output_ssd.mp4', 'rb').read()
-                # video_file = cv2.cvtColor(video_file, cv2.COLOR_BGR2RGB)
-                st.video(video_file)
+            re_video_file = open('data/videos/record_ssd.mp4','rb').read()
+            st.video(re_video_file)
     
 
 
