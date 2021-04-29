@@ -41,7 +41,7 @@ def run_yolo():
         st.write('YOLO 는 이미지를 S X S 의 그리드로 나눠 각각의 그리드에서 트레이닝 되어 있는 데이터를 기반으로 확률로 객체를 인식하고 , IOU를 이용하여 같은 객체임을 판단한다.')
         st.write('이때 여러개의 바운딩 박스가 생성되는데 , NMS 를 이용하여 하나만 남겨준다.')
 
-        yolo_cap_img4 = Image.open('data/images/yolo_capture4.PNG')
+        yolo_cap_img4 = Image.open('data/images/yolo_capture4.png')
         yolo_cap_img4 = yolo_cap_img4.resize((600,400))
         st.image(yolo_cap_img4)
         
