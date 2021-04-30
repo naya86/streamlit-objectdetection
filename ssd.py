@@ -106,13 +106,13 @@ def run_ssd() :
         
         if sel_ssd == 'Video' :
 
-            st.subheader('출력되는 영상 실시간 Object Dection')
+            st.subheader('Object Detection 처리 영상')
+            st.info('AWS EC2의 프리티어 사용으로 실시간 처리가 힘들어 Local에서의 작업 후 결과 영상')
      
             video_file = open('data/videos/output_ssd.mp4', 'rb').read()
             # video_file = cv2.cvtColor(video_file, cv2.COLOR_BGR2RGB)
             st.video(video_file)
-            st.write('(실시간 영상을 출력하려 했으나 , EC2 프리티어 문제로, LOCAL작업 후 올린 영상)')
-            st.write('(LOCAL에서의 DETECTION 처리 영상)')
+            st.write('(Local에서의 Object Detection 처리 영상)')
             
             re_video_file = open('data/videos/record_ssd.mp4','rb').read()
             st.video(re_video_file)
