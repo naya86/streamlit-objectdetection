@@ -24,6 +24,8 @@ def run_home() :
     img = Image.open('data/images/home_image.png')
     img = img.resize((600,400))
     st.image(img)
+
+    st.write('여기다 해야되!!!! 기다려!! https://kyeonghyeon86.tistory.com/')
     
 
     
