@@ -38,8 +38,15 @@ def run_yolo():
         yolo_cap_img2 = yolo_cap_img2.resize((600,400))
         st.image(yolo_cap_img2)
 
-        st.write('YOLO 는 이미지를 S X S 의 그리드로 나눠 각각의 그리드에서 트레이닝 되어 있는 데이터를 기반으로 확률로 객체를 인식하고 , IOU를 이용하여 같은 객체임을 판단한다.')
-        st.write('이때 여러개의 바운딩 박스가 생성되는데 , NMS 를 이용하여 하나만 남겨준다.')
+        st.write('YOLO 는 이미지를 7 X 7 의 그리드로 나눠 각각의 그리드에서 트레이닝 되어 있는 데이터를 기반으로 확률로 객체를 인식하고 , IOU(Intersection Over Union)를 학습된 객체임을 판단한다.')
+        st.write('IOU : 객체 검출을 할 때 예측한 객체에 대한 정보를 가지는 Bounding box와 정답 Box의 IoU를 통해서 임계 값(threshold)이 0.5 이상일 경우 일치하는 객체로 판단하는 작업을 한다.')
+        st.write('(임계 값이 높을수록 정답과 일치함을 의미하는데 기준 임계 값을 너무 높게 한다면 검출율이 낮아지기 때문에 적당한 임계 값을 설정하는 것이 중요하다. ( 대표적인 값이 0.5 ) )')
+        yolo_cap_img5 = Image.open('data/images/yolo_capture5.PNG')
+        yolo_cap_img5 = yolo_cap_img5.resize((600,400))
+        st.image(yolo_cap_img5)
+
+        st.write('이때 여러개의  Bounding box가 생성되는데, 그 중 가장 정답 객체와 유사한 객체를 제외한 나머지는 제거하는 작업을 NMS 통하여 진행한다.')
+        st.write('NMS(Non-Maximum-Suppression) : 가장 높은 확률만 남기고 제거(pc값이 가장 높은 것)')
 
         yolo_cap_img4 = Image.open('data/images/yolo_capture4.png')
         yolo_cap_img4 = yolo_cap_img4.resize((600,400))

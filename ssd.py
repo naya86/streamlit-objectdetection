@@ -35,21 +35,36 @@ def run_ssd() :
 
         st.subheader('SSD란 Single Shot Detector 의 약자로 , ')
         st.write('말 그대로 사진의 변형 없이 그 한 장으로 훈련, 검출을 하는 Detector를 의미한다. ')
-        st.write('기존의 처리속도 및 정확도를 개선하여, 효율적으로 기능하게끔 한다.')
-        
+        st.write('SSD는 기존 YOLO의 그리드셀 방식을 적용시키고, 처리속도 및 정확도를 개선하기 위해 개발되었다.')
+                
         ssd_cap_img1 = Image.open('data/images/ssd_capture1.PNG')
         ssd_cap_img1 = ssd_cap_img1.resize((600,400))
         st.image(ssd_cap_img1)
         st.write('(SSD의 정확도 및 처리속도)')
 
+        st.write('SSD는 VGG Net을 이용하였지만, 그대로 이용하지 않고, SSD모델에 맞게 수정하여 이용하였다. ')
         ssd_cap_img2 = Image.open('data/images/ssd_capture2.PNG')
         ssd_cap_img2 = ssd_cap_img2.resize((600,400))
         st.image(ssd_cap_img2)
-        st.write('(SSD Structure)')
-        st.write('SSD는 YOLO와 다르게, 중간계층의 다양한 피쳐맵(Feature Map)들을 활용할 뿐만아니라 FC Layer계층을 컨볼루션 연산으로 대체함으로써, 성능과 속도를 향상시켰다.') 
+        
+        st.write('SSD는 YOLO V1과는 다르게, FC layer를 제거시켜 Object Detection 모델에서 입력이미지를 고정시키지 않아도 가능하다.')
+        ssd_cap_img3 = Image.open('data/images/ssd_capture3.PNG')
+        ssd_cap_img3 = ssd_cap_img3.resize((600,400))
+        st.image(ssd_cap_img3)
 
-        st.write('Base Network로는 VGG-16을 사용하였다.')
+        st.write('SSD 역시 그리드셀을 사용하게 되는데, 다양한 크기의 객체 검출을 위해서 다양한 크기의 feature map을 사용하게 된다.')
+        st.write('feature map크기에 따라 사이즈가 큰 객체, 사이즈가 작은 객체를 검출할 확률이 다르기 때문에 높은 정확성을 위하여 이런 방식을 사용한다.')
+        ssd_cap_img4 = Image.open('data/images/ssd_capture4.PNG')
+        ssd_cap_img4 = ssd_cap_img4.resize((600,400))
+        st.image(ssd_cap_img4)
 
+        st.write('이러한 일련의 과정을 통하여 나온 결과는 같은 객체임에도 많은 Bounding box를 가지게 된다.')
+        st.write('이를 해결하기 위해, NMS를 적용하여 정답과 가장 유사하다고 하는 값을 가지는 Bounding box를 선택하여 객체로 검출한다.')
+        ssd_cap_img5 = Image.open('data/images/ssd_capture5.PNG')
+        ssd_cap_img5 = ssd_cap_img5.resize((600,400))
+        st.image(ssd_cap_img5)
+
+        
 
 
 
