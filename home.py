@@ -29,7 +29,7 @@ def run_home() :
     img = img.resize((600,400))
     st.image(img)
 
-    st.write('참고 : 언젠가 정리 https://kyeonghyeon86.tistory.com/')
+    
     
 
     
